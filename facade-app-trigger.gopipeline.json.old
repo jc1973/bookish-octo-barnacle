@@ -1,3 +1,5 @@
+/* if using multiple scm materials, Material must have destination directory when there are many SCM materials */
+/* This example will not work */
 {
   "name": "facade-trigger",
   "environment_variables": [],
@@ -7,6 +9,13 @@
       "url": "git@github.com:JSainsburyPLC/id-facade.git",
       "type": "git",
       "branch": "SID-94",
+      "name": "java-app"
+    },
+    {
+      "url": "git@github.com:JSainsburyPLC/id-chef.git",
+      "type": "git",
+      "branch": "sort-chef-layout",
+      "name": "chef-cookbook"
     }
   ],
   "stages": [
