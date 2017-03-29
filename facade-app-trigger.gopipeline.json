@@ -1,0 +1,43 @@
+{
+  "name": "facade-trigger",
+  "environment_variables": [],
+  "group" : "application-triggers",
+  "materials": [
+    {
+      "url": "git@github.com:JSainsburyPLC/id-facade.git",
+      "type": "git",
+      "branch": "SID-94"
+    }
+  ],
+  "stages": [
+    {
+      "name": "check-commits",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "check-commits",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "/bin/echo",
+              "arguments": [ "'commit detected'"],
+              "working_directory": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
