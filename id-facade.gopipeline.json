@@ -4,10 +4,14 @@
   "group" : "java-apps",
   "materials": [
     {
-      "url": "git@github.com:JSainsburyPLC/id-facade.git",
+      "url": "git@github.com:JSainsburyPLC/id-chef.git",
       "type": "git",
-      "branch": "SID-94"
-    }
+      "branch": "sort-chef-layout"
+    },
+      "type": "dependency",
+      "name": "dependency",
+      "pipeline": "facade-trigger",
+      "stage": "git-commit"
   ],
   "stages": [
     {
