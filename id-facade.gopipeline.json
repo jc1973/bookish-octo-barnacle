@@ -4,16 +4,22 @@
   "group" : "java-apps",
   "materials": [
     {
-      "url": "git@github.com:JSainsburyPLC/id-chef.git",
-      "type": "git",
-      "branch": "sort-chef-layout",
-      "name": "git-commited"
+      "type": "dependency",
+      "name": "cookbook-changes",
+      "pipeline": "kong-support",
+      "stage": "cookstyle"
     },
     {
       "type": "dependency",
-      "name": "dependency",
+      "name": "id-facade-changed",
       "pipeline": "facade-trigger",
       "stage": "git-commit"
+    },
+    {
+      "url": "git@github.com:JSainsburyPLC/id-chef.git",
+      "type": "git",
+      "branch": "sort-chef-layout",
+      "name": "packer-build-ami"
     }
   ],
   "stages": [
