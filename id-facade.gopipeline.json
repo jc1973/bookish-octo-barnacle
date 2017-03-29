@@ -8,10 +8,12 @@
       "type": "git",
       "branch": "sort-chef-layout"
     },
+    {
       "type": "dependency",
       "name": "dependency",
       "pipeline": "facade-trigger",
       "stage": "git-commit"
+    }
   ],
   "stages": [
     {
