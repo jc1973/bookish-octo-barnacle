@@ -1,0 +1,83 @@
+{
+  "name": "ami-facade",
+  "environment_variables": [],
+  "group" : "ami-builder",
+  "materials": [
+    {
+      "url": "git@github.com:jc1973/bookish-octo-barnacle.git",
+      "type": "git"
+    }
+  ],
+  "stages": [
+    {
+      "name": "dev2",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "approval": {
+        "type": "manual",
+        "users": [],
+        "roles": [
+        ]
+      },
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "dev2",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "./packer_wrapper.pl",
+              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-8cc30de8", "--subnetid", "subnet-f3bd49ab", "-E", "dev2", "-r", "facade", "-j", "packer-chef-policy.json" ],
+              "working_directory": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "staging",
+      "fetch_materials": true,
+      "never_cleanup_artifacts": false,
+      "clean_working_directory": false,
+      "approval": {
+        "type": "manual",
+        "users": [],
+        "roles": [
+        ]
+      },
+      "environment_variables": [],
+      "jobs": [
+        {
+          "name": "staging",
+          "environment_variables": [],
+          "tabs": [],
+          "resources": [],
+          "artifacts": [],
+          "properties": [],
+          "run_instance_count": null,
+          "timeout": 0,
+          "tasks": [
+            {
+              "type": "exec",
+              "run_if": "passed",
+              "on_cancel" : null,
+              "command": "./packer_wrapper.pl",
+              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-8cc30de8", "--subnetid", "subnet-f3bd49ab", "-E", "staging", "-r", "facade", "-j", "packer-chef-policy.json" ],
+              "working_directory": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
