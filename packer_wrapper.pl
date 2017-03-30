@@ -151,27 +151,27 @@ print "\nNow running packer build command: packer build $packer_json\n\n";
 
 print "\n\n$cmd\n\n";
 
-exit 0;
 
 @output = `$cmd`;
 $exit_status = $? >> 8;
 print @output;
-#open (WRITEFILE, ">>/tmp/packer-debug.txt");
-#print WRITEFILE @output;
-#close WRITEFILE;
+open (WRITEFILE, ">>/tmp/packer-debug.txt");
+print WRITEFILE @output;
+close WRITEFILE;
 print "\n\n";
 print "Exit status: $exit_status\n\n";
+exit $exit_status;
 
-if ( $exit_status == 0 ) {
-  my $packer_ami_id = $output[-1];
-  $packer_ami_id =~s/\S+:\s+(\S+)/$1/;
-  $cmd = "knife environment attribute set $chef_environment pre-built-amis.$resource $packer_ami_id";
-  print $cmd;
-  @output = `$cmd`;
-  $exit_status = $? >> 8;
-  print @output;
-  print "\n\n";
-}
+#if ( $exit_status == 0 ) {
+#  my $packer_ami_id = $output[-1];
+#  $packer_ami_id =~s/\S+:\s+(\S+)/$1/;
+#  $cmd = "knife environment attribute set $chef_environment pre-built-amis.$resource $packer_ami_id";
+#  print $cmd;
+#  @output = `$cmd`;
+#  $exit_status = $? >> 8;
+#  print @output;
+#  print "\n\n";
+#}
 exit $exit_status;
 
 
