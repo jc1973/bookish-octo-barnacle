@@ -10,7 +10,7 @@
   ],
   "stages": [
     {
-      "name": "dev2",
+      "name": "dev",
       "fetch_materials": true,
       "never_cleanup_artifacts": false,
       "clean_working_directory": false,
@@ -23,7 +23,7 @@
       "environment_variables": [],
       "jobs": [
         {
-          "name": "dev2",
+          "name": "dev",
           "environment_variables": [],
           "tabs": [],
           "resources": [],
@@ -37,7 +37,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "./packer_wrapper.pl",
-              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-8cc30de8", "--subnetid", "subnet-f3bd49ab", "-E", "dev2", "-r", "facade", "-j", "packer-chef-policy.json" ],
+              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-8cc30de8", "--subnetid", "subnet-f3bd49ab", "-E", "dev", "-r", "facade", "-j", "packer-chef-policy.json" ],
               "working_directory": null
             }
           ]
