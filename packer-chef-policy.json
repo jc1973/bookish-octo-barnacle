@@ -14,7 +14,7 @@
     "home":                               "{{env `HOME`}}",
     "encrypted_data_bag_file_name":       "{{env `CHEF_ENCRYPTED_DATA_BAG_FILE_NAME`}}",
     "vpc_id":                             "{{env `VPC_ID`}}",
-    "subnet_id":                          "{{env `CHEF_ENCRYPTED_DATA_BAG_FILE_NAME`}}",
+    "subnet_id":                          "{{env `SUBNET_ID`}}",
     "chef_version":                       "12.14.89",
     "project":                            "Identity",
     "owner":                              "Jacob Lester",
@@ -81,10 +81,11 @@
     {
       "type":                             "chef-client",
       "server_url":                       "{{user `chef_server`}}",
+      "chef_environment":                 "{{user `chef_environment`}}",
+      "run_list":                         "role[{{user `chef_role`}}]",
       "encrypted_data_bag_secret_path":   "{{user `home` }}/.chef/{{user `encrypted_data_bag_file_name`}}",
       "validation_key_path":              "{{user `home` }}/.chef/{{user `validation_client_name`}}.pem",
       "validation_client_name":           "{{user `validation_client_name`}}",
-      "execute_command":                  "sudo chef-client --no-color -c /tmp/packer-chef-client/client.rb -j /tmp/packer-chef-client/first-boot.json",
       "json":                             {
                                             "disable_cw_logs": true,
                                             "building-with-packer": true,

@@ -6,7 +6,7 @@ use warnings;
 my ( $AWS_ACCESS_KEY_ID, $SECRETACCESSKEY, $SESSIONTOKEN, $arn, $cmd, $line, @contents, @output, $resource, $session_name, $vpc_id, $subnet_id );
 my $KEYMATERIAL = "";
 my $type = "t2.small";
-my $image = "ami-47a23a30";
+my $image = "ami-11102677";
 my $volume_size = 8;
 my $chef_environment = "_default";
 my $packer_json =  "packer-chef-client.json";
@@ -150,6 +150,8 @@ $cmd = ". /tmp/$session_name-$keyname.source && packer build $packer_json";
 print "\nNow running packer build command: packer build $packer_json\n\n";
 
 print "\n\n$cmd\n\n";
+
+exit 0;
 
 @output = `$cmd`;
 $exit_status = $? >> 8;
