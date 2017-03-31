@@ -1,0 +1,1 @@
+./packer_wrapper.pl --session jsgocd-test --vpcid vpc-66b9af02 --subnetid subnet-9f7b21c7 -E dev -r facade -j packer-chef-policy.json --image ami-495c612f

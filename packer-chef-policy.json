@@ -81,8 +81,6 @@
     {
       "type":                             "chef-client",
       "server_url":                       "{{user `chef_server`}}",
-      "chef_environment":                 "{{user `chef_environment`}}",
-      "run_list":                         "role[{{user `chef_role`}}]",
       "encrypted_data_bag_secret_path":   "{{user `home` }}/.chef/{{user `encrypted_data_bag_file_name`}}",
       "validation_key_path":              "{{user `home` }}/.chef/{{user `validation_client_name`}}.pem",
       "validation_client_name":           "{{user `validation_client_name`}}",

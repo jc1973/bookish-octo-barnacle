@@ -37,7 +37,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "./packer_wrapper.pl",
-              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-8cc30de8", "--subnetid", "subnet-f3bd49ab", "-E", "dev", "-r", "facade", "-j", "packer-chef-policy.json" ],
+              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-66b9af02", "--subnetid", "subnet-9f7b21c7", "-E", "dev", "-r", "facade", "--image", "ami-495c612f", "-j", "packer-chef-policy.json" ],
               "working_directory": null
             }
           ]
@@ -72,7 +72,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "./packer_wrapper.pl",
-              "arguments": [ "--session", "jsgocd-test", "--vpcid", "vpc-8cc30de8", "--subnetid", "subnet-f3bd49ab", "-E", "staging", "-r", "facade", "-j", "packer-chef-policy.json" ],
+              "arguments": [ "--session", "jsgocd-test", "--image", "ami-495c612f", "--vpcid", "vpc-66b9af02", "--subnetid", "subnet-9f7b21c7", "-E", "staging", "-r", "facade", "-j", "packer-chef-policy.json" ],
               "working_directory": null
             }
           ]
