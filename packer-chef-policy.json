@@ -79,37 +79,16 @@
   
   "provisioners" : [ 
     {
-      "type":                             "chef-client",
-      "server_url":                       "{{user `chef_server`}}",
-      "encrypted_data_bag_secret_path":   "{{user `home` }}/.chef/{{user `encrypted_data_bag_file_name`}}",
-      "validation_key_path":              "{{user `home` }}/.chef/{{user `validation_client_name`}}.pem",
-      "validation_client_name":           "{{user `validation_client_name`}}",
-      "json":                             {
-                                            "disable_cw_logs": true,
-                                            "building-with-packer": true,
-                                            "chef_client": {
-                                              "daemon_options": [
-                                                "-j",
-                                                "/etc/chef/first-boot.json"
-                                              ]
-                                            },
-                                          "id_chef" : {
-                                            "facade_deploy" : {
-                                              "env" : "staging"
-                                              }
-                                            },
-                                            "policy_name" : "{{user `chef_role`}}",
-                                            "policy_group" : "{{user `chef_environment`}}"
-                                          }
-    },
-    { 
-      "type": "shell",
-      "inline": [
-        "echo $HOSTNAME",
-        "ls -tralhR /var/tmp"
-      ],  
-      "only": [ "amazon-ebs" ]
-    }   
 
+
+
+      "encrypted_data_bag_secret_path":   "{{user `home` }}/.chef/{{user `encrypted_data_bag_file_name`}}",
+      "server_url":                       "{{user `chef_server`}}",
+      "skip_install":                     true,
+      "type":                             "chef-client",
+      "validation_client_name":           "{{user `validation_client_name`}}",
+      "validation_key_path":              "{{user `home` }}/.chef/{{user `validation_client_name`}}.pem",
+      "json": { "policy_name":"facade", "policy_group":"staging", "id_chef": {"facade_deploy": { "env": "staging"}}}
+    }
   ]
 }
