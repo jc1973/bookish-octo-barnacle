@@ -3,26 +3,28 @@
     "aws_access_key":                     "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key":                     "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_session_token":                  "{{env `AWS_SESSION_TOKEN`}}",
+    "chef_environment":                   "{{env `CHEF_ENVIRONMENT`}}",
+    "chef_role":                          "{{env `RESOURCE`}}",
     "chef_server":                        "{{env `CHEF_SERVER_URL`}}",
-    "encrypted_data_bag_secret_path":     "{{env `CHEF_SECRET_KEY`}}",
-    "validation_client_name":             "{{env `CHEF_VALIDATION_CLIENT_NAME`}}",
-    "validation_key_path":                "{{env `CHEF_VALIDATION_KEY`}}",
-    "client_key":                         "{{env `OPSCODE_USER`}}",
-    "source_ami":                         "{{env `AMI_IMAGE`}}",
-    "instance_type":                      "{{env `AMI_TYPE`}}",
-    "volume_size":                        "{{env `AMI_DISK_SIZE`}}",
-    "home":                               "{{env `HOME`}}",
-    "encrypted_data_bag_file_name":       "{{env `CHEF_ENCRYPTED_DATA_BAG_FILE_NAME`}}",
-    "vpc_id":                             "{{env `VPC_ID`}}",
-    "subnet_id":                          "{{env `SUBNET_ID`}}",
     "chef_version":                       "12.14.89",
-    "project":                            "Identity",
-    "owner":                              "Jacob Lester",
-    "email":                              "jacob.lester@sainsburys.co.uk",
+    "client_key":                         "{{env `OPSCODE_USER`}}",
     "costcentre":                         "PD4523",
+    "description":                        "Redhat Facade Deploy Image for Identity",
+    "email":                              "jacob.lester@sainsburys.co.uk",
+    "encrypted_data_bag_file_name":       "{{env `CHEF_ENCRYPTED_DATA_BAG_FILE_NAME`}}",
+    "encrypted_data_bag_secret_path":     "{{env `CHEF_SECRET_KEY`}}",
+    "home":                               "{{env `HOME`}}",
+    "instance_type":                      "{{env `AMI_TYPE`}}",
     "live":                               "no",
     "name":                               "Facade deploy image",
-    "description":                        "Redhat Facade Deploy Image for Identity",
+    "owner":                              "Jacob Lester",
+    "project":                            "Identity",
+    "source_ami":                         "{{env `AMI_IMAGE`}}",
+    "subnet_id":                          "{{env `SUBNET_ID`}}",
+    "validation_client_name":             "{{env `CHEF_VALIDATION_CLIENT_NAME`}}",
+    "validation_key_path":                "{{env `CHEF_VALIDATION_KEY`}}",
+    "volume_size":                        "{{env `AMI_DISK_SIZE`}}",
+    "vpc_id":                             "{{env `VPC_ID`}}",
     "environment":                        "dev"
   },  
 
@@ -88,7 +90,15 @@
       "type":                             "chef-client",
       "validation_client_name":           "{{user `validation_client_name`}}",
       "validation_key_path":              "{{user `home` }}/.chef/{{user `validation_client_name`}}.pem",
-      "json": { "policy_name":"facade", "policy_group":"staging", "id_chef": {"facade_deploy": { "env": "staging"}}}
+      "json":                             {
+                                            "policy_group" : "{{user `chef_environment`}}",
+                                            "policy_name" : "{{user `chef_role`}}",
+                                            "id_chef" : {
+                                                "facade_deploy" : {
+                                                  "env" : "staging"
+                                                }
+                                              }
+                                            }
     }
   ]
 }
