@@ -1,0 +1,64 @@
+{
+  "variables": {
+    "aws_access_key":                     "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key":                     "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_session_token":                  "{{env `AWS_SESSION_TOKEN`}}",
+    "chef_server":                        "{{env `CHEF_SERVER_URL`}}",
+    "chef_environment":                   "{{env `CHEF_ENVIRONMENT`}}",
+    "encrypted_data_bag_secret_path":     "{{env `CHEF_SECRET_KEY`}}",
+    "validation_client_name":             "{{env `CHEF_VALIDATION_CLIENT_NAME`}}",
+    "validation_key_path":                "{{env `CHEF_VALIDATION_KEY`}}",
+    "client_key":                         "{{env `OPSCODE_USER`}}",
+    "source_ami":                         "{{env `AMI_IMAGE`}}",
+    "instance_type":                      "{{env `AMI_TYPE`}}",
+    "chef_role":                          "{{env `RESOURCE`}}",
+    "volume_size":                        "{{env `AMI_DISK_SIZE`}}",
+    "home":                               "{{env `HOME`}}",
+    "encrypted_data_bag_file_name":       "{{env `CHEF_ENCRYPTED_DATA_BAG_FILE_NAME`}}"
+
+  },  
+
+  "builders": [
+    {
+      "type":                             "amazon-ebs",
+      "access_key":                       "{{user `aws_access_key_id`}}",
+      "secret_key":                       "{{user `aws_secret_key`}}",
+      "token":                            "{{user `aws_session_token`}}",
+      "region":                           "eu-west-1",
+      "source_ami":                       "{{user `source_ami`}}",
+      "instance_type":                    "{{user `instance_type`}}",
+      "ssh_username":                     "ubuntu",
+      "ami_name":                         "{{user `chef_role`}}-{{timestamp}}",
+      "vpc_id":                           "vpc-03365867",
+      "subnet_id":                        "subnet-adb0c9db",
+      "ami_block_device_mappings": [
+        {
+          "device_name":                  "/dev/sda1",
+          "volume_size":                  "{{user `volume_size`}}",
+          "delete_on_termination":        true,
+          "volume_type":                  "gp2"
+        }
+      ]
+    }   
+  ],
+  
+  "provisioners" : [ 
+    {
+      "type":                             "chef-client",
+      "server_url":                       "{{user `chef_server`}}",
+      "chef_environment":                 "{{user `chef_environment`}}",
+      "run_list":                         "role[{{user `chef_role`}}]",
+      "encrypted_data_bag_secret_path":   "{{user `home` }}/.chef/{{user `encrypted_data_bag_file_name`}}",
+      "validation_key_path":              "{{user `home` }}/.chef/{{user `validation_client_name`}}.pem",
+      "validation_client_name":           "{{user `validation_client_name`}}",
+      "json":                             {
+                                            "disable_cw_logs": true,
+                                            "single_instance": true,
+                                            "building-with-packer": true,
+                                            "rabbitmq": {
+                                              "cluster": false
+                                            }
+                                          }
+    }
+  ]
+}
