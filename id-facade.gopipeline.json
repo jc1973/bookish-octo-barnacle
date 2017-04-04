@@ -44,9 +44,9 @@
               "type": "exec",
               "run_if": "passed",
               "on_cancel" : null,
-              "command": "/opt/chefdk/embedded/bin/rspec",
+              "command": "/usr/bin/env",
               "arguments": [ ],
-              "working_directory": "cookbooks/js-gocd"
+              "working_directory": null
             }
           ]
         }
