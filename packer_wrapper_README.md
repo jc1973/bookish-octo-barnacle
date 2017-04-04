@@ -96,7 +96,7 @@ export ACCESS_KEY=$AWS_ACCESS_KEY_ID
 export SECRET_KEY=$AWS_SECRET_ACCESS_KEY
 ```
 
-** Please replace AWS_ACCOUNT_NUMBER with the account number for the project and likewise the IAM role **
+**Please replace AWS_ACCOUNT_NUMBER with the account number for the project and likewise the IAM role**
 
 Finally here is an example template for using chef policy files:
 [packer-chef-policy.json](packer-chef-policy.json)
@@ -106,6 +106,6 @@ And an example template for using chef roles / environments:
 
 
 
-### TODO
+### To Do
 
 Maybe re-write it in a different language which is more popular, which retains exactly the same functionality (including, switches etc..), both scripts should be consistent with each other.
