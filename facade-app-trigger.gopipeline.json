@@ -60,7 +60,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "gocd-orchestrate-databg.rb",
-              "arguments": [ "-E", "dev", "-g", "'git@github.com:JSainsburyPLC/id-facade.git'", "-a", "commit:$GO_REVISION" ],
+              "arguments": [ "-E", "dev", "-g", "'git@github.com:JSainsburyPLC/id-facade.git'", "-a", "commit:${GO_REVISION}" ],
               "working_directory": null
             }
           ]
