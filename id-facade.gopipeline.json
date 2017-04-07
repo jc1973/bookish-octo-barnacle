@@ -103,7 +103,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "./packer_wrapper.pl",
-              "arguments": [ "--session", "'argh-no-i'", "--vpcid", "vpc-66b9af02", "--subnetid", "subnet-9f7b21c7", "-E", "staging", "-r", "facade", "-j", "packer-chef-policy.json", "--image", "ami-495c612f" ],
+              "arguments": [ "--session", "'jsgocd-vagrant'", "--vpcid", "vpc-66b9af02", "--subnetid", "subnet-9f7b21c7", "-E", "staging", "-r", "facade", "-j", "packer-chef-policy.json", "--image", "ami-495c612f" ],
               "working_directory": "orchestration/packer"
             }
           ]
