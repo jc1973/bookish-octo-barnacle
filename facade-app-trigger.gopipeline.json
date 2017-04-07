@@ -90,7 +90,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "echo",
-              "arguments": [ "\"gocd-orchestrate-databg.rb -E dev -g 'git@github.com:JSainsburyPLC/id-facade.git' -a  commit:${GO_REVISION}\" > $HOME/script-databag.sh" ],
+              "arguments": [ "\"gocd-orchestrate-databg.rb -E dev -g 'git@github.com:JSainsburyPLC/id-facade.git' -a  commit:${GO_REVISION}\" > /var/tmp/script-databag.sh" ],
               "working_directory": null
             }
           ]
