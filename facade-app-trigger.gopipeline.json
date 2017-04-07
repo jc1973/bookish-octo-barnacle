@@ -61,7 +61,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "/bin/echo",
-              "arguments": [ "$HOME"],
+              "arguments": [ "$GO_REVISION"],
               "working_directory": null
             }
           ]
