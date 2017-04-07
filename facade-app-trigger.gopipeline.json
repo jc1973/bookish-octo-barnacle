@@ -61,7 +61,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "/bin/echo",
-              "arguments": [  $GO_REVISION ],
+              "arguments": [  ${GO_REVISION} ],
               "working_directory": null
             }
           ]
