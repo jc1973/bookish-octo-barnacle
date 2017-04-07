@@ -41,7 +41,7 @@
     },
     {
       "name": "script-databag-gocd-orchestrate",
-      "never_cleanup_artifacts": false,
+      "never_cleanup_artifacts": true,
       "clean_working_directory": false,
       "environment_variables": [],
       "jobs": [
