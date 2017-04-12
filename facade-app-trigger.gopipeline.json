@@ -61,7 +61,7 @@
               "run_if": "passed",
               "on_cancel" : null,
               "command": "/home/go/GoCD_v1/Cx_GoCD.sh",
-              "arguments": [ "-p", "'All'", "-n", "'id-facade'" ]
+              "arguments": [ "-p", "'All'", "-n", "'id-facade'" ],
               "working_directory": null
             }
           ]
