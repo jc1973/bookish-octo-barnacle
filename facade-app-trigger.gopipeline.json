@@ -126,35 +126,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "gocd-orchestrate-databag-update",
-      "never_cleanup_artifacts": false,
-      "clean_working_directory": false,
-      "environment_variables": [],
-      "jobs": [
-        {
-          "name": "update-databag",
-          "environment_variables": [],
-          "tabs": [],
-          "resources": [],
-          "artifacts": [],
-          "properties": [],
-          "run_instance_count": null,
-          "timeout": 0,
-          "tasks": [
-            {
-              "type": "exec",
-              "run_if": "passed",
-              "on_cancel" : null,
-              "command": "gocd-orchestrate-databg.rb",
-              "arguments": [ "\" -E dev -g 'git@github.com:JSainsburyPLC/id-facade.git' -a  commit:5573ede4e2265aa1d4a56edab99e8fda9081c745,go-changed-this:true\"" ],
-              "working_directory": null
-            }
-          ]
-        }
-      ]
     }
-
   ]
 }
